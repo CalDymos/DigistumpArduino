@@ -11,6 +11,7 @@
 #ifndef __usbconfig_h_included__
 #define __usbconfig_h_included__
 
+#ifndef __usbUserConfig_h_included__
 /*
 General Description:
 This file is an example configuration (with inline documentation) for the USB
@@ -165,10 +166,15 @@ section at the end of this file).
  * for each control- and out-endpoint to check for duplicate packets.
  */
 #define USB_CFG_HAVE_MEASURE_FRAME_LENGTH   1
-#include "osccal.h"
 /* define this macro to 1 if you want the function usbMeasureFrameLength()
  * compiled in. This function can be used to calibrate the AVR's RC oscillator.
  */
+#endif
+
+#include "osccal.h"
+
+#ifndef __usbUserConfig_h_included__
+
 #define USB_USE_FAST_CRC                0
 /* The assembler module has two implementations for the CRC algorithm. One is
  * faster, the other is smaller. This CRC routine is only used for transmitted
@@ -322,6 +328,8 @@ section at the end of this file).
 #define USB_CFG_DESCR_PROPS_UNKNOWN                 0
 
 /* ---------------------------- Hardware Config ---------------------------- */
+
+#endif /* __usbUserConfig_h_included__ */
 
 #include "usbboardconfig.h"
 
